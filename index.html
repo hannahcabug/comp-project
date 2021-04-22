@@ -6,7 +6,82 @@
         </title>
         <meta charset="UTF-8">
         <script>
+        
+        /*
+        Hannah:
+        -index.html
+        -alphabet
 
+        Chisaki:
+        -ajax.html
+        
+        */
+
+        window.onload = function()
+        {
+            // textbox and button
+            document.body.appendChild(document.createElement("br"))
+            
+            var textBox = document.createElement("input")
+            textBox.type = "text"
+            textBox.style.padding = "3px"
+            document.body.appendChild(textBox)
+
+            document.body.appendChild(document.createElement("br"))
+            document.body.appendChild(document.createElement("br"))
+
+            var button= document.createElement("input")
+            button.type = "button"
+            button.value = "enter"
+            button.style.backgroundColor = "darkturquoise"
+            button.style.color = "white"
+            button.style.border = "none"
+            button.style.padding = "10px 30px"
+            document.body.appendChild(button)
+
+            var br = document.createElement('br')
+            document.body.appendChild(br)
+            
+            //hyperlinks
+            button.onclick=function()
+            {
+                //storage
+                if(textBox.value == "storage")
+                {
+                    var storage = document.createElement('a')
+                    var linkText = document.createTextNode('storage link')
+                    storage.appendChild(linkText)
+                    storage.href="/storage.html"
+                    document.body.appendChild(storage)
+                }
+                //plugin
+                if(textBox.value == "plugin")
+                {
+                    var plugin = document.createElement('a')
+                    var linkText = document.createTextNode('plugin link')
+                    plugin.appendChild(linkText)
+                    plugin.href="/plugin.html"
+                    document.body.appendChild(plugin)
+                }                
+                //alien
+                if(textBox.value == "alien")
+                {
+
+                }                
+                //jquery
+                if(textBox.value == "jquery")
+                {
+
+                }                
+                //alphabet
+                if(textBox.value == "alphabet")
+                {
+
+                }
+                
+                
+            }
+        }
         </script>
 
     </head>

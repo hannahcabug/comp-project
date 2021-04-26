@@ -5,13 +5,119 @@
             Storage | Hannah Cabug and Chisaki Nakamura
         </title>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+        <style>
+            body {display:flex; 
+            flex-direction: column; 
+            font-family: 'Montserrat', sans-serif;
+            align-items: center;
+            background-color: aliceblue;
+            }
+            h1{
+                margin-top:50px;
+                color: darkblue;
+            }
+            .info{
+                background-color:white;
+                padding: 30px;
+                font-size: 20px;
+                max-width: 700px;
+                line-height: 1.75;
+                margin:15px;
+                border-radius: 15px;
+                margin-bottom: 20px;
+                box-shadow: 5px 5px 5px lightgray;
+            }
+    
+            li {
+                margin-top: 20px;
+            }
+
+            .example-info{
+                margin-top: 0;
+            }            
+            
+            .example-info h2{
+                font-size: 25px;
+                margin-bottom: 0;
+                color: darkblue;
+            }
+
+            img{
+                box-shadow: 5px 5px 5px lightgray;
+                padding: 30px;
+                font-size: 20px;
+                max-width: 900px;
+                margin:15px;
+                border-radius: 15px;
+                background-color: white;
+            }
+            .example{
+                margin-bottom: 5rem;
+            }
+            .button{
+                margin-top: 25px;
+                margin-bottom: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border:none;
+                padding: 20px;
+                border-radius: 5px;
+                color: white;
+                background-color: darkblue;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            button:hover{
+                background-color: deepskyblue;
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        
+        </style>
         <script>
-
-        </script>
-
+            function clickCounter() {
+              if(typeof(Storage) !== "undefined") {
+                if (localStorage.clickcount) {
+                  localStorage.clickcount = Number(localStorage.clickcount)+1;
+                } else {
+                  localStorage.clickcount = 1;
+                }
+                document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+              } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+              }
+            }
+            </script>
     </head>
     <body>
-        
-        
-    </body>
+        <h1>What is Local Storage?</h1>
+        <div class="info">
+            <ul>
+                <li>In a web browser, the localStorage property allows you to save key-value pairs.</li>
+                <li>The localStorage object holds data that does not expire. When the browser is removed, the data is not deleted. Therefore, it will be available for an indefinite period of time.</li>
+            </ul>
+        </div>
+    
+        <div class="example-info">
+            <h2>Example of a Local Storage:</h2>
+            <p>The following example counts the number of times a user has clicked a button</p>
+            <img src="./images/storage2.png" alt="storage example">
+        </div>
+
+        <div class="example">
+            <div class="center">
+                <button class="button" onclick="clickCounter()" type="button">Click me!</button>
+            </div>
+
+            <div id="result"></div>
+            <p>Click the button to see the counter increase.</p>
+            <p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+        </div>
 </html>

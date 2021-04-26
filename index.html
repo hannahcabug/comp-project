@@ -36,6 +36,7 @@
             button.style.backgroundColor = "darkturquoise"
             button.style.color = "white"
             button.style.border = "none"
+            button.style.borderRadius = "7px"
             button.style.padding = "10px 30px"
             document.body.appendChild(button)
 
@@ -66,8 +67,26 @@
                 //alien
                 if(textBox.value == "alien")
                 {
+                    var alienImg = document.createElement("img")
+                    alienImg.src = "../images/alien/alienrwalk0.gif"
+                    document.body.appendChild(alienImg)
+                    alienImg.style.position = "absolute"
+                    alienImg.style.left = "100px";
+                    alienImg.style.top = "200px";
+                    alienImg.id = "alien"
+                }
 
-                }                
+                //alien step
+
+                //bye
+                if(textBox.value == "bye")
+                {
+                    alien.style.display = "none";
+                }
+
+                moveTimer = null
+                stepNumber = 0    
+
                 //jquery
                 if(textBox.value == "jquery")
                 {
@@ -76,11 +95,24 @@
                 //alphabet
                 if(textBox.value == "alphabet")
                 {
-
+                    for(let i = 'z'.charCodeAt(0); i >= 'a'.charCodeAt(0); i--)
+                    {
+                        letterImg = document.createElement("img")
+                        letters = String.fromCharCode(i)
+                
+                        letterImg.id = letters
+                        letterImg.width = 45
+                        letterImg.src = "../images/letters/" + letters + ".png"
+                        document.body.appendChild(letterImg)
+                    }
+                    $('img').click(src)
                 }
                 
-                
             }
+        }
+        function src()
+        {
+            $('img').attr('src', $(this).attr('src'))
         }
         </script>
 

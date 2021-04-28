@@ -63,6 +63,30 @@
                     plugin.appendChild(linkText)
                     plugin.href="/plugin.html"
                     document.body.appendChild(plugin)
+                }
+                //ajax
+                if (textBox.value == "ajax")
+                {
+                    var ajax = new XMLHttpRequest ();
+                    ajax.open ('GET', 'advice.txt', true);
+
+                    ajax.onload = function(e)
+                    {
+                        if (ajax.readyState === 4)
+                        {
+                            if (ajax.status === 200)
+                            {
+
+                                var advice = ajax.responseText;
+                                var h1 = document.createElement('H1')
+
+                                h1.innerHTML = advice;
+                                document.body.appendChild(h1)
+                                console.log(advice);
+                            }
+                        }
+                     }
+                ajax.send(null);
                 }                
                 //alien
                 if(textBox.value == "alien")

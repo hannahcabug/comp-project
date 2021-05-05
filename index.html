@@ -5,6 +5,7 @@
             Index | Hannah Cabug and Chisaki Nakamura
         </title>
         <meta charset="UTF-8">
+        <script src="jquery-3.6.0.min.js"></script>
         <script>
         
         /*
@@ -114,7 +115,35 @@
                 //jquery
                 if(textBox.value == "jquery")
                 {
+                    let Img1 = document.createElement("img")
+                    Img1.src = "https:placekitten.com/100/100"
+                    Img1.id = "image1"
+                    document.body.appendChild(Img1)
+                    $('#image1').attr('width', 200)
 
+                    let Img2 = document.createElement("img")
+                    Img2.src = "https:placekitten.com/200/200"
+                    Img2.id = "image2"
+                    document.body.appendChild(Img2)
+                    $('#image2').attr('width', 200)
+                    $('#image2').click(function(){
+                        $(this).css('border', '10px red solid')
+                    })
+                   
+
+                    let Img3 = document.createElement("img")
+                    Img3.src = "https:placekitten.com/50/50"
+                    Img3.id = "image3"
+                    document.body.appendChild(Img3)
+                    $('#image3').attr('width', 200)
+
+                    let Img4 = document.createElement("img")
+                    Img4.src = "https:placekitten.com/500/500"
+                    Img4.id = "image4"
+                    document.body.appendChild(Img4)
+                    $('#image4').attr('width', 200)
+
+                    
                 }                
                 //alphabet
                 if(textBox.value == "alphabet")

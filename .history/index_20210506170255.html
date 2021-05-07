@@ -120,23 +120,27 @@
 
                     if (timer == null)
                         {
-                            timer = setInterval(moveRight, 20)
+                            timer = setInterval(stepRight, 20)
                             direction = "r"
-                        }  
-                    else// alien is already moving; stop it like (b)
+                        }
+                        else if (parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
-                            if (timer !== null)
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 20);
+                            clearInterval(timer)
+                            timer = setInterval(stepRight, 20)
                             direction = "r"
-                            }
-                            else
-                            {
-                            timer = setInterval(moveLeft, 20)
-                            direction = "l"
-                            }
-                            
+                            MoveLeft()
+                        }
+                        else if (parseInt(alienImg.style.left) <= 0)
+                        {
+                            clearInterval(timer);
+                            timer = setInterval(stepLeft, 20);
+                            direction = "l";
+                            moveRight()
+                        }
+                            else // alien is already moving; stop it like (b)
+                        {
+                            clearInterval(timer)
+                            timer = null
                         }
 
                     function stepRight()

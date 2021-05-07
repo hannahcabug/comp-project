@@ -111,91 +111,25 @@
                 }
 
                 //alien step
-                if(textBox.value == "walk")
-                {
-                    var stepNumber = 11
-                    var timer = null
-                    var direction = null
-                    alienImg = document.getElementById("alien")
+                var stepNumber = 11
+                var collisionTimer = null;
+                var direction = null;
+                var jumpDirection = null;
+                var timer = null
+                var isJumping = false;
 
-                    if (timer == null)
-                        {
-                            timer = setInterval(moveRight, 20)
-                            direction = "r"
-                        }  
-                    else// alien is already moving; stop it like (b)
-                        {
-                            if (timer !== null)
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 20);
-                            direction = "r"
-                            }
-                            else
-                            {
-                            timer = setInterval(moveLeft, 20)
-                            direction = "l"
-                            }
-                            
-                        }
+    function toggleMoving ()
+{
 
-                    function stepRight()
-                    {
-                        stepNumber = stepNumber + 1
-                        if (stepNumber >= 30)
-                        {
-                            stepNumber = 0
-                        }
-                        alienImg.src = "../images/alien/alienrwalk" + stepNumber + ".gif"
-                        alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px"
-                        direction = "r"
-                    }
+  alien = document.getElementById('a')
 
-                    
-                    function stepLeft ()
-                    {
-                        stepNumber = stepNumber + 1
-                        if (stepNumber >= 30)
-                        {
-                            stepNumber = 0
-                        }
-                        alienImg.src = "../images/alien/alienlwalk" + stepNumber + ".gif"
-                        alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px"
-                        direction = "l"
-                    }
-                    function Alien()
-                    {
-                        alienImg.src = "../images/alien/alien"+ direction +"walk0.gif";
-                    }
 
-                    function moveRight()
-                    {
-                        if(parseInt(alienImg.style.left) > document.body.clientWidth)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 20);
-                            direction = "l";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
-                            stepRight(); // animation
-                        }
-                    }
-                    function moveLeft ()
-                    {
-                        if(parseInt(alienImg.style.left) <= 0)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 20);
-                            direction = "r";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
-                            stepLeft(); // animation
-                        }
-                    }
+ // make sure what is this now
+  alien.onclick = function(e)
+  {
 
-                }
-                
-                
+    alert(this.style.left)
+  }
                 //bye
                 if(textBox.value == "bye")
                 {

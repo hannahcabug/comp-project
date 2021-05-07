@@ -120,23 +120,24 @@
 
                     if (timer == null)
                         {
-                            timer = setInterval(moveRight, 20)
-                            direction = "r"
-                        }  
-                    else// alien is already moving; stop it like (b)
+                            timer = setInterval(stepRight, 20)
+                        }
+                        else if (parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
-                            if (timer !== null)
-                            {
+                            clearInterval(timer)
+                            timer = setInterval(stepLeft, 20)
+                            direction = "l";
+                        }
+                        else if (parseInt(alien.style.left) <= 0)
+                        {
                             clearInterval(timer);
                             timer = setInterval(moveRight, 20);
-                            direction = "r"
-                            }
-                            else
-                            {
-                            timer = setInterval(moveLeft, 20)
-                            direction = "l"
-                            }
-                            
+        direction = "r";
+                        }
+                            else // alien is already moving; stop it like (b)
+                        {
+                            clearInterval(timer)
+                            timer = null
                         }
 
                     function stepRight()
@@ -148,7 +149,6 @@
                         }
                         alienImg.src = "../images/alien/alienrwalk" + stepNumber + ".gif"
                         alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px"
-                        direction = "r"
                     }
 
                     
@@ -161,36 +161,10 @@
                         }
                         alienImg.src = "../images/alien/alienlwalk" + stepNumber + ".gif"
                         alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px"
-                        direction = "l"
                     }
                     function Alien()
                     {
                         alienImg.src = "../images/alien/alien"+ direction +"walk0.gif";
-                    }
-
-                    function moveRight()
-                    {
-                        if(parseInt(alienImg.style.left) > document.body.clientWidth)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 20);
-                            direction = "l";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
-                            stepRight(); // animation
-                        }
-                    }
-                    function moveLeft ()
-                    {
-                        if(parseInt(alienImg.style.left) <= 0)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 20);
-                            direction = "r";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
-                            stepLeft(); // animation
-                        }
                     }
 
                 }

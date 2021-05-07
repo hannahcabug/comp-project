@@ -115,31 +115,8 @@
                 {
                     var stepNumber = 11
                     var timer = null
-                    var direction = null
-                    alienImg = document.getElementById("alien")
 
-                    if (timer == null)
-                        {
-                            timer = setInterval(moveRight, 20)
-                            direction = "r"
-                        }  
-                    else// alien is already moving; stop it like (b)
-                        {
-                            if (timer !== null)
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 20);
-                            direction = "r"
-                            }
-                            else
-                            {
-                            timer = setInterval(moveLeft, 20)
-                            direction = "l"
-                            }
-                            
-                        }
-
-                    function stepRight()
+                    function step()
                     {
                         stepNumber = stepNumber + 1
                         if (stepNumber >= 30)
@@ -147,52 +124,36 @@
                             stepNumber = 0
                         }
                         alienImg.src = "../images/alien/alienrwalk" + stepNumber + ".gif"
-                        alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px"
-                        direction = "r"
-                    }
-
-                    
-                    function stepLeft ()
-                    {
-                        stepNumber = stepNumber + 1
-                        if (stepNumber >= 30)
-                        {
-                            stepNumber = 0
-                        }
-                        alienImg.src = "../images/alien/alienlwalk" + stepNumber + ".gif"
-                        alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px"
-                        direction = "l"
-                    }
-                    function Alien()
-                    {
-                        alienImg.src = "../images/alien/alien"+ direction +"walk0.gif";
                     }
 
                     function moveRight()
                     {
-                        if(parseInt(alienImg.style.left) > document.body.clientWidth)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 20);
-                            direction = "l";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
-                            stepRight(); // animation
-                        }
+      
+                        alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px"
+                        step()
                     }
                     function moveLeft ()
                     {
-                        if(parseInt(alienImg.style.left) <= 0)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 20);
-                            direction = "r";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
-                            stepLeft(); // animation
-                        }
+                        alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px"
+                        step()
                     }
 
+                    onload=function()
+                    {
+                        alienImg = document.getElementById("alien")
+                        alienImg.onclick = function ()
+                    {
+                         if (timer == null)
+                        {
+                            timer = setInterval(step, 20)
+                        }
+                            else // alien is already moving; stop it like (b)
+                        {
+                            clearInterval(timer)
+                            timer = null
+                        }
+                    }
+      }
                 }
                 
                 

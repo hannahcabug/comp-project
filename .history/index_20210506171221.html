@@ -126,16 +126,10 @@
                     else// alien is already moving; stop it like (b)
                         {
                             if (timer !== null)
-                            {
                             clearInterval(timer);
                             timer = setInterval(moveRight, 20);
                             direction = "r"
-                            }
-                            else
-                            {
-                            timer = setInterval(moveLeft, 20)
-                            direction = "l"
-                            }
+                            
                             
                         }
 

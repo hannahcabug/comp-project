@@ -267,8 +267,7 @@
 
              if (textBox.value == "stop")
                 { 
-                    clearInterval(timer)
-                    timer === null
+                    timer = null
                     stepNumber = 0
                     alien.style.display = "none";
 
@@ -286,7 +285,7 @@
                 //bye
                 if(textBox.value == "bye")
                 {
-                    alienstop.style.display = "none";
+                    alien.style.display = "none";
                 }
 
                 moveTimer = null

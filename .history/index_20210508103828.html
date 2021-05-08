@@ -203,7 +203,7 @@
                         {
                             if (timer = setInterval(moveRight, 100))
                             {
-                            clearInterval(timer)
+                            clearInterval(timer);
                             timer = setInterval(moveRight, 100)
                             direction = "r"
 
@@ -212,7 +212,7 @@
                             }
                             else if (timer = setInterval(moveLeft, 100))
                             {
-                            clearInterval(timer)
+                            clearInterval(timer);
                             timer = setInterval(moveLeft, 100)
                             direction = "r"
 
@@ -257,28 +257,16 @@
                             direction = "l"
                             }  
                         }
-                    else 
-                    {
-                        clearInterval(timer)
-                        timer = setInterval(runRight, 10)
-                        direction = "r"
-                    }
                 }
-
-             if (textBox.value == "stop")
+                else if (textBox.value == "stop")
                 { 
-                    clearInterval(timer)
-                    timer === null
-                    stepNumber = 0
-                    alien.style.display = "none";
 
-                    var alienImg = document.createElement("img")
-                    alienImg.src = "../images/alien/alienrwalk0.gif"
-                    document.body.appendChild(alienImg)
-                    alienImg.style.position = "absolute"
-                    alienImg.style.left = "100px";
-                    alienImg.style.top = "200px";
-                    alienImg.id = "alienstop"
+                        clearInterval(timer)
+                        timer = null
+                    
+                    
+                  
+    
                 }
                
                 
@@ -286,7 +274,7 @@
                 //bye
                 if(textBox.value == "bye")
                 {
-                    alienstop.style.display = "none";
+                    alien.style.display = "none";
                 }
 
                 moveTimer = null

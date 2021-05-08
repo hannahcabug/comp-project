@@ -264,21 +264,13 @@
                         direction = "r"
                     }
                 }
-
-             if (textBox.value == "stop")
+                
+             if (textBox.value == "stop" && timer !== null)
                 { 
                     clearInterval(timer)
-                    timer === null
-                    stepNumber = 0
-                    alien.style.display = "none";
-
-                    var alienImg = document.createElement("img")
-                    alienImg.src = "../images/alien/alienrwalk0.gif"
-                    document.body.appendChild(alienImg)
-                    alienImg.style.position = "absolute"
-                    alienImg.style.left = "100px";
-                    alienImg.style.top = "200px";
-                    alienImg.id = "alienstop"
+                    timer = null
+                    Alien()
+                    alien.style.display = "inline";
                 }
                
                 
@@ -286,7 +278,7 @@
                 //bye
                 if(textBox.value == "bye")
                 {
-                    alienstop.style.display = "none";
+                    alien.style.display = "none";
                 }
 
                 moveTimer = null

@@ -110,11 +110,34 @@
                     alienImg.id = "alien"
                 }
 
-                //alien walk
+                //alien step
+                if(textBox.value == "walk")
+                {
                     var stepNumber = 11
                     var timer = null
                     var direction = null
                     alienImg = document.getElementById("alien")
+
+                    if (timer == null)
+                        {
+                            timer = setInterval(moveRight, 20)
+                            direction = "r"
+                        }  
+                    else// alien is already moving; stop it like (b)
+                        {
+                            if (timer !== null)
+                            {
+                            clearInterval(timer);
+                            timer = setInterval(moveRight, 20);
+                            direction = "r"
+                            }
+                            else
+                            {
+                            timer = setInterval(moveLeft, 20)
+                            direction = "l"
+                            }
+                            
+                        }
 
                     function stepRight()
                     {
@@ -124,6 +147,8 @@
                             stepNumber = 0
                         }
                         alienImg.src = "../images/alien/alienrwalk" + stepNumber + ".gif"
+                        alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px"
+                        direction = "r"
                     }
 
                     
@@ -135,10 +160,12 @@
                             stepNumber = 0
                         }
                         alienImg.src = "../images/alien/alienlwalk" + stepNumber + ".gif"
+                        alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px"
+                        direction = "l"
                     }
                     function Alien()
                     {
-                        alienImg.src = "../images/alien/alien" + direction + "walk0.gif"
+                        alienImg.src = "../images/alien/alien"+ direction +"walk0.gif";
                     }
 
                     function moveRight()
@@ -146,7 +173,7 @@
                         if(parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
                             clearInterval(timer);
-                            timer = setInterval(moveLeft, 100);
+                            timer = setInterval(moveLeft, 20);
                             direction = "l";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
@@ -158,7 +185,7 @@
                         if(parseInt(alienImg.style.left) <= 0)
                         {
                             clearInterval(timer);
-                            timer = setInterval(moveRight, 100);
+                            timer = setInterval(moveRight, 20);
                             direction = "r";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
@@ -166,114 +193,11 @@
                         }
                     }
 
-                    function runRight()
-                    {
-                        if(parseInt(alienImg.style.left) > document.body.clientWidth)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10);
-                            direction = "l";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
-                            stepRight(); // animation
-                        }
-                    }
-
-                    function runLeft ()
-                    {
-                        if(parseInt(alienImg.style.left) <= 0)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(runRight, 10);
-                            direction = "r";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
-                            stepLeft(); // animation
-                        }
-                    }
-
-                if(textBox.value == "walk")
-                {
-                    if (timer == null)
-                        {
-                            timer = setInterval(moveRight, 100)
-                            direction = "r"
-                        }  
-                    else if (timer !== null)
-                        {
-                            if (timer = setInterval(moveRight, 100))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 100)
-                            direction = "r"
-
-                            timer = setInterval(moveLeft, 100)
-                            direction = "l"
-                            }
-                            else if (timer = setInterval(moveLeft, 100))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 100)
-                            direction = "r"
-
-                            timer = setInterval(moveRight, 100)
-                            direction = "l"
-                            }
-                            else 
-                            {
-                                clearInterval(timer)
-                                timer = null
-                            }
-                            
-                        }
-
-                }
-                else if (textBox.value == "run")
-                {
-                    if (timer == null)
-                        {
-                            timer = setInterval(runRight, 10)
-                            direction = "r"
-                        }  
-                    else if (timer !== null)
-                        {
-                            if (timer = setInterval(runRight, 10))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(runRight, 10)
-                            direction = "r"
-
-                            timer = setInterval(runLeft, 10)
-                            direction = "l"
-                            }
-                            else if (timer = setInterval(runLeft, 10))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10)
-                            direction = "r"
-
-                            timer = setInterval(runRight, 10)
-                            direction = "l"
-                            }
-                            else 
-                            {
-                                clearInterval(timer)
-                                timer = null
-                            }
-                            
-                        }
                 }
                 else if (textBox.value == "stop")
-                { 
-
-                        clearInterval(timer)
-                        timer = null
-                    
-                    
-                  
-    
+                {
+                    if (timer!== )
                 }
-               
                 
                 
                 //bye

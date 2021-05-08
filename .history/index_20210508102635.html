@@ -265,10 +265,11 @@
                 }
                 else if (textBox.value == "stop")
                 { 
-
+                    if (timer !== null)
+                    {
                         clearInterval(timer)
                         timer = null
-                    
+                    }
                     
                   
     

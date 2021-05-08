@@ -171,7 +171,7 @@
                         if(parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
                             clearInterval(timer);
-                            timer = setInterval(runLeft, 10);
+                            timer = setInterval(moveLeft, 10);
                             direction = "l";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
@@ -184,7 +184,7 @@
                         if(parseInt(alienImg.style.left) <= 0)
                         {
                             clearInterval(timer);
-                            timer = setInterval(runRight, 10);
+                            timer = setInterval(moveRight, 10);
                             direction = "r";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
@@ -199,79 +199,39 @@
                             timer = setInterval(moveRight, 100)
                             direction = "r"
                         }  
-                    else if (timer !== null)
+                    else
                         {
-                            if (timer = setInterval(moveRight, 100))
+                            if (timer !== null)
                             {
                             clearInterval(timer);
                             timer = setInterval(moveRight, 100)
                             direction = "r"
-
+                            }
+                            else
+                            {
                             timer = setInterval(moveLeft, 100)
                             direction = "l"
-                            }
-                            else if (timer = setInterval(moveLeft, 100))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 100)
-                            direction = "r"
-
-                            timer = setInterval(moveRight, 100)
-                            direction = "l"
-                            }
-                            else 
-                            {
-                                clearInterval(timer)
-                                timer = null
                             }
                             
                         }
 
                 }
                 else if (textBox.value == "run")
-                {
-                    if (timer == null)
-                        {
-                            timer = setInterval(runRight, 10)
-                            direction = "r"
-                        }  
-                    else if (timer !== null)
-                        {
-                            if (timer = setInterval(runRight, 10))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(runRight, 10)
-                            direction = "r"
-
-                            timer = setInterval(runLeft, 10)
-                            direction = "l"
-                            }
-                            else if (timer = setInterval(runLeft, 10))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10)
-                            direction = "r"
-
-                            timer = setInterval(runRight, 10)
-                            direction = "l"
-                            }
-                            else 
-                            {
-                                clearInterval(timer)
-                                timer = null
-                            }
-                            
-                        }
-                }
+                
+                
                 else if (textBox.value == "stop")
                 { 
-
+                    if (timer !== null)
+                    {
                         clearInterval(timer)
                         timer = null
+                        
+                    }
+                   else
+                   {
+                    timer = null
                     
-                    
-                  
-    
+                   }
                 }
                
                 

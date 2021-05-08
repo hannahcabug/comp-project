@@ -171,7 +171,7 @@
                         if(parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
                             clearInterval(timer);
-                            timer = setInterval(runLeft, 10);
+                            timer = setInterval(moveLeft, 10);
                             direction = "l";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
@@ -184,7 +184,7 @@
                         if(parseInt(alienImg.style.left) <= 0)
                         {
                             clearInterval(timer);
-                            timer = setInterval(runRight, 10);
+                            timer = setInterval(moveRight, 10);
                             direction = "r";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
@@ -221,7 +221,7 @@
                             }
                             else 
                             {
-                                clearInterval(timer)
+                                clearInterval(timer);
                                 timer = null
                             }
                             
@@ -257,21 +257,25 @@
                             }
                             else 
                             {
-                                clearInterval(timer)
-                                timer = null
+                                
                             }
                             
                         }
                 }
+                
                 else if (textBox.value == "stop")
                 { 
-
+                    if (timer !== null)
+                    {
                         clearInterval(timer)
                         timer = null
+                        
+                    }
+                   else
+                   {
+                    timer = null
                     
-                    
-                  
-    
+                   }
                 }
                
                 

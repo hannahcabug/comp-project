@@ -110,7 +110,7 @@
                     alienImg.id = "alien"
                 }
 
-                //alien walk
+                //alien step
                     var stepNumber = 11
                     var timer = null
                     var direction = null
@@ -124,6 +124,8 @@
                             stepNumber = 0
                         }
                         alienImg.src = "../images/alien/alienrwalk" + stepNumber + ".gif"
+                        alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px"
+                        direction = "r"
                     }
 
                     
@@ -135,6 +137,8 @@
                             stepNumber = 0
                         }
                         alienImg.src = "../images/alien/alienlwalk" + stepNumber + ".gif"
+                        alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px"
+                        direction = "l"
                     }
                     function Alien()
                     {
@@ -146,7 +150,7 @@
                         if(parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
                             clearInterval(timer);
-                            timer = setInterval(moveLeft, 100);
+                            timer = setInterval(moveLeft, 20);
                             direction = "l";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
@@ -158,33 +162,7 @@
                         if(parseInt(alienImg.style.left) <= 0)
                         {
                             clearInterval(timer);
-                            timer = setInterval(moveRight, 100);
-                            direction = "r";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
-                            stepLeft(); // animation
-                        }
-                    }
-
-                    function runRight()
-                    {
-                        if(parseInt(alienImg.style.left) > document.body.clientWidth)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10);
-                            direction = "l";
-                        }else{
-                            alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
-                            stepRight(); // animation
-                        }
-                    }
-
-                    function runLeft ()
-                    {
-                        if(parseInt(alienImg.style.left) <= 0)
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(runRight, 10);
+                            timer = setInterval(moveRight, 20);
                             direction = "r";
                         }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
@@ -196,82 +174,31 @@
                 {
                     if (timer == null)
                         {
-                            timer = setInterval(moveRight, 100)
+                            timer = setInterval(moveRight, 20)
                             direction = "r"
                         }  
-                    else if (timer !== null)
+                    else
                         {
-                            if (timer = setInterval(moveRight, 100))
+                            if (timer !== null)
                             {
                             clearInterval(timer);
-                            timer = setInterval(moveRight, 100)
+                            timer = setInterval(moveRight, 20)
                             direction = "r"
-
-                            timer = setInterval(moveLeft, 100)
-                            direction = "l"
                             }
-                            else if (timer = setInterval(moveLeft, 100))
+                            else
                             {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 100)
-                            direction = "r"
-
-                            timer = setInterval(moveRight, 100)
+                            timer = setInterval(moveLeft, 20)
                             direction = "l"
-                            }
-                            else 
-                            {
-                                clearInterval(timer)
-                                timer = null
                             }
                             
                         }
 
-                }
-                else if (textBox.value == "run")
-                {
-                    if (timer == null)
-                        {
-                            timer = setInterval(runRight, 10)
-                            direction = "r"
-                        }  
-                    else if (timer !== null)
-                        {
-                            if (timer = setInterval(runRight, 10))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(runRight, 10)
-                            direction = "r"
-
-                            timer = setInterval(runLeft, 10)
-                            direction = "l"
-                            }
-                            else if (timer = setInterval(runLeft, 10))
-                            {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10)
-                            direction = "r"
-
-                            timer = setInterval(runRight, 10)
-                            direction = "l"
-                            }
-                            else 
-                            {
-                                clearInterval(timer)
-                                timer = null
-                            }
-                            
-                        }
                 }
                 else if (textBox.value == "stop")
-                { 
-
-                        clearInterval(timer)
-                        timer = null
-                    
-                    
-                  
-    
+                {
+                    clearInterval(timer)
+                    timer = null
+                    Alien()
                 }
                
                 

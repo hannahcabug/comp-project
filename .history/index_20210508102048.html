@@ -221,7 +221,7 @@
                             }
                             else 
                             {
-                                clearInterval(timer)
+                                clearInterval(timer);
                                 timer = null
                             }
                             
@@ -265,13 +265,17 @@
                 }
                 else if (textBox.value == "stop")
                 { 
-
-                        clearInterval(timer)
-                        timer = null
-                    
+                    if (timer !== null)
+                    {
+                    clearInterval(timer)
+                    timer = setInterval(runLeft)
+                    timer = null
+                    }
                     
                   
-    
+                    var alienImg = document.createElement("img")
+                    alienImg.src = "../images/alien/alienrwalk0.gif"
+                    document.body.appendChild(alienImg)
                 }
                
                 

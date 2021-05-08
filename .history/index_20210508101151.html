@@ -221,7 +221,7 @@
                             }
                             else 
                             {
-                                clearInterval(timer)
+                                clearInterval(timer);
                                 timer = null
                             }
                             
@@ -263,15 +263,21 @@
                             
                         }
                 }
+                
                 else if (textBox.value == "stop")
                 { 
-
+                    if (timer !== null)
+                    {
                         clearInterval(timer)
                         timer = null
+                        
+                        
+                    }
+                   else
+                   {
+                    timer = null
                     
-                    
-                  
-    
+                   }
                 }
                
                 

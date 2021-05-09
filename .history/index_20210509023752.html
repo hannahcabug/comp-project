@@ -97,8 +97,18 @@
                         }
                      }
                 ajax.send(null);
-                }      
-
+           
+                //alien
+                if(textBox.value == "alien")
+                {
+                    var alienImg = document.createElement("img")
+                    alienImg.src = "../images/alien/alienrwalk0.gif"
+                    document.body.appendChild(alienImg)
+                    alienImg.style.position = "absolute"
+                    alienImg.style.left = "10px";
+                    alienImg.style.top = "200px";
+                    alienImg.id = "alien"
+                }
                 //alien
                 var stepNumber = 11
                 var timer = null

@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Index | Hannah Cabug and Chisaki Nakamura
+        </title>
+        <meta charset="UTF-8">
+        <script src="jquery-3.6.0.min.js"></script>
+        <script>
+        
+        /*
+        work contributions (based off of rubric sections)
+
+        Hannah:
+        index.html
+          -alphabet
+          -alien
+        storage.html
+        plugin.html
+
+        Chisaki:
+        index.html
+          -jquery
+          -ajax
+          -alien
+        ajax.html
+        
+        */
+
+        window.onload = function()
+        {
+            // textbox and button
+            document.body.appendChild(document.createElement("br"))
+            
+            var textBox = document.createElement("input")
+            textBox.type = "text"
+            textBox.style.padding = "3px"
+            document.body.appendChild(textBox)
+
+            document.body.appendChild(document.createElement("br"))
+            document.body.appendChild(document.createElement("br"))
+
+            var button= document.createElement("input")
+            button.type = "button"
+            button.value = "enter"
+            button.style.backgroundColor = "darkturquoise"
+            button.style.color = "white"
+            button.style.border = "none"
+            button.style.borderRadius = "7px"
+            button.style.padding = "10px 30px"
+            document.body.appendChild(button)
+
+            var br = document.createElement('br')
+            document.body.appendChild(br)
+            
+            //hyperlinks
+            button.onclick=function()
+            {
+                //storage
+                if(textBox.value == "storage")
+                {
+                    var storage = document.createElement('a')
+                    var linkText = document.createTextNode('storage link')
+                    storage.appendChild(linkText)
+                    storage.href="/storage.html"
+                    document.body.appendChild(storage)
+                }
+                //plugin
+                if(textBox.value == "plugin")
+                {
+                    var plugin = document.createElement('a')
+                    var linkText = document.createTextNode('plugin link')
+                    plugin.appendChild(linkText)
+                    plugin.href="/plugin.html"
+                    document.body.appendChild(plugin)
+                }
+                //ajax
+                if (textBox.value == "ajax")
+                {
+                    var ajax = new XMLHttpRequest ();
+                    ajax.open ('GET', 'advice.txt', true);
+
+                    ajax.onload = function(e)
+                    {
+                        if (ajax.readyState === 4)
+                        {
+                            if (ajax.status === 200)
+                            {
+
+                                var advice = ajax.responseText;
+                                var h1 = document.createElement('H1')
+
+                                h1.innerHTML = advice;
+                                document.body.appendChild(h1)
+                                console.log(advice);
+                            }
+                        }
+                     }
+                ajax.send(null);
+                }                
+                //alien
+                if(textBox.value == "alien")
+                {
+                    var alienImg = document.createElement("img")
+                    alienImg.src = "../images/alien/alienrwalk0.gif"
+                    document.body.appendChild(alienImg)
+                    alienImg.style.position = "absolute"
+                    alienImg.style.left = "100px";
+                    alienImg.style.top = "200px";
+                    alienImg.id = "alien"
+                }
+
+                    //alien walk
+                    
+
+                else if(textBox.value.includes ("walk"))
+                {
+                    if (timer == null)
+                        {
+                            timer = setInterval(moveRight, 100)
+                         
+                        }  
+                    else if (timer !== null)
+                        {
+                            if (timer = setInterval(moveRight, 100))
+                            {
+                            clearInterval(timer)
+                            timer = setInterval(moveRight, 100)
+                        
+
+                            timer = setInterval(moveLeft, 100)
+                          
+                            }
+                            else if (timer = setInterval(moveLeft, 100))
+                            {
+                            clearInterval(timer)
+                            timer = setInterval(moveLeft, 100)
+                       
+
+                            timer = setInterval(moveRight, 100)
+                          
+                            }
+                            
+                        }
+                    else 
+                    {
+                        clearInterval(timer)
+                        timer = setInterval(moveRight, 100)
+                   
+                    }
+
+                }
+                else if (textBox.value.includes("run"))
+                {
+                    if (timer == null)
+                        {
+                            timer = setInterval(runRight, 10)
+                          
+                        }  
+                    else if (timer !== null)
+                        {
+                            if (timer = setInterval(runRight, 10))
+                            {
+                            clearInterval(timer);
+                            timer = setInterval(runRight, 10)
+                         
+
+                            timer = setInterval(runLeft, 10)
+                            
+                            }
+                            else if (timer = setInterval(runLeft, 10))
+                            {
+                            clearInterval(timer);
+                            timer = setInterval(runLeft, 10)
+                            
+
+                            timer = setInterval(runRight, 10)
+                          
+                            }  
+                        }
+                    else 
+                    {
+                        clearInterval(timer)
+                        timer = setInterval(runRight, 10)
+                  
+                    }
+                }
+
+             else if (textBox.value.includes ("stop"))
+                { 
+                    clearInterval(timer)
+                    timer = null
+                   
+                }
+               
+                
+                
+                //bye
+            else if (textBox.value == "bye")
+                {
+                    alienstop.style.display = "none";
+                }
+
+                moveTimer = null
+                stepNumber = 0    
+
+                //jquery
+                if(textBox.value == "jquery")
+                {
+                    let Img1 = document.createElement("img")
+                    Img1.src = "../images/cat.jpg"
+                    Img1.id = "image1"
+                    document.body.appendChild(Img1)
+                    $('#image1').attr('width', 200)
+
+                    let Img2 = document.createElement("img")
+                    Img2.src = "../images/bird.jpg"
+                    Img2.id = "image2"
+                    document.body.appendChild(Img2)
+                    $('#image2').attr('width', 200)
+                    $('#image2').click(function(){
+                        $(this).css('border', '10px red solid')
+                    })
+                   
+
+                    let Img3 = document.createElement("img")
+                    Img3.src = "../images/dog.jpg"
+                    Img3.id = "image3"
+                    document.body.appendChild(Img3)
+                    $('#image3').attr('width', 200)
+
+                    let Img4 = document.createElement("img")
+                    Img4.src = "../images/bunny.jpg"
+                    Img4.id = "image4"
+                    document.body.appendChild(Img4)
+                    $('#image4').attr('width', 200)
+
+                    
+                }                
+                //alphabet
+                if(textBox.value == "alphabet")
+                {
+                    for(let i = 'z'.charCodeAt(0); i >= 'a'.charCodeAt(0); i--)
+                    {
+                        letterImg = document.createElement("img")
+                        letters = String.fromCharCode(i)
+                
+                        letterImg.id = letters
+                        letterImg.width = 45
+                        letterImg.src = "../images/letters/" + letters + ".png"
+                        document.body.appendChild(letterImg)
+                    }
+                    $('img').click(src)
+                }
+                
+            }
+        }
+        function src()
+        {
+            $('img').attr('src', $(this).attr('src'))
+        }
+        </script>
+
+    </head>
+    <body>
+        
+        
+    </body>
+</html>

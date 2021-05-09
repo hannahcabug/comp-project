@@ -102,9 +102,9 @@
                 //alien
                 var stepNumber = 11
                 var timer = null
-                alienImg = document.getElementById("alien")
+                    alienImg = document.getElementById("alien")
 
-                function stepRight()
+                    function stepRight()
                     {
                         stepNumber = stepNumber + 1
                         if (stepNumber >= 30)
@@ -115,7 +115,7 @@
                     }
 
                     
-                function stepLeft ()
+                    function stepLeft ()
                     {
                         stepNumber = stepNumber + 1
                         if (stepNumber >= 30)
@@ -126,103 +126,56 @@
                     }
                 
 
-                function moveRight()
+                    function moveRight()
                     {
                         if(parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
                             clearInterval(timer);
                             timer = setInterval(moveLeft, 100);
-                        }
-                     
-                        else if (textBox.value.includes("stop"))
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveLeft, 100);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
-                        }
-                        else
-                        {
+    
+                        }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
                             stepRight(); // animation
                         }
                     }
-                function moveLeft ()
+                    function moveLeft ()
                     {
                         if(parseInt(alienImg.style.left) <= 0)
                         {
                             clearInterval(timer);
                             timer = setInterval(moveRight, 100);
                          
-                        }
-                      
-                        else if (textBox.value.includes("stop"))
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 100);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
-                        }
-                        else
-                        {
+                        }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
                             stepLeft(); // animation
                         }
                     }
 
-                function runRight()
+                    function runRight()
                     {
                         if(parseInt(alienImg.style.left) > document.body.clientWidth)
                         {
                             clearInterval(timer);
                             timer = setInterval(runLeft, 10);
                           
-                        }
-                        else if (textBox.value.includes("stop"))
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
-                        }
-                        else
-                        {
+                        }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
                             stepRight(); // animation
                         }
                     }
 
-                function runLeft ()
+                    function runLeft ()
                     {
                         if(parseInt(alienImg.style.left) <= 0)
                         {
                             clearInterval(timer);
                             timer = setInterval(runRight, 10);
                         
-                        }
-                        else if (textBox.value.includes("stop"))
-                        {
-                             clearInterval(timer);
-                            timer = setInterval(runRight, 10);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
-                        }
-                        else
-                        {
+                        }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
                             stepLeft(); // animation
                         }
                     }
-                
-                // create Alien
                 if(textBox.value == "alien")
                 {
                     var alienImg = document.createElement("img")
@@ -234,33 +187,99 @@
                     alienImg.id = "alien"
                 }
 
-                //alien timer
-                if (timer == null)
-                    {
-                        if (textBox.value.includes("walk"))
-                            {
-                                timer = setInterval(moveRight, 100)
-                            }  
-                      
-                        else if (textBox.value.includes("run"))
-                            {
-                                timer = setInterval(runRight, 10)
-                            }
-                    }
-                else (timer !== null)
-                    {
-                        if (textBox.value.includes("walk") && textBox.value.includes("stop"))
+                    //alien walk
+                    
+
+                else if(textBox.value.includes ("walk"))
+                {
+                    if (timer == null)
                         {
+                            timer = setInterval(moveRight, 100)
+                         
+                        }  
+                    else if (timer !== null)
+                        {
+                            if (timer = setInterval(moveRight, 100))
+                            {
                             clearInterval(timer)
                             timer = setInterval(moveRight, 100)
-                        }
-                        else if (textBox.value.includes("run") && textBox.value.includes("stop"))
-                            {
-                                clearInterval(timer)
-                                timer = setInterval(runRight, 10)
+                        
+
+                            timer = setInterval(moveLeft, 100)
+                          
                             }
-                    }
+                            else if (timer = setInterval(moveLeft, 100))
+                            {
+                            clearInterval(timer)
+                            timer = setInterval(moveLeft, 100)
                        
+
+                            timer = setInterval(moveRight, 100)
+                          
+                            }
+                            
+                        }
+                    else 
+                    {
+                        clearInterval(timer)
+                        timer = setInterval(moveRight, 100)
+                   
+                    }
+
+                }
+                else if (textBox.value.includes("run"))
+                {
+                    if (timer == null)
+                        {
+                            timer = setInterval(runRight, 10)
+                          
+                        }  
+                    else if (timer !== null)
+                        {
+                            if (timer = setInterval(runRight, 10))
+                            {
+                            clearInterval(timer);
+                            timer = setInterval(runRight, 10)
+                         
+
+                            timer = setInterval(runLeft, 10)
+                            
+                            }
+                            else if (timer = setInterval(runLeft, 10))
+                            {
+                            clearInterval(timer);
+                            timer = setInterval(runLeft, 10)
+                            
+
+                            timer = setInterval(runRight, 10)
+                          
+                            }  
+                        }
+                    else 
+                    {
+                        clearInterval(timer)
+                        timer = setInterval(runRight, 10)
+                  
+                    }
+                }
+
+             else if (textBox.value.includes ("stop"))
+                { 
+                    clearInterval(timer)
+                    timer = null
+                   
+                }
+               
+                
+                
+                //bye
+            else if (textBox.value == "bye")
+                {
+                    alienstop.style.display = "none";
+                }
+
+                moveTimer = null
+                stepNumber = 0    
 
                 //jquery
                 if(textBox.value == "jquery")

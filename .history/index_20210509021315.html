@@ -132,16 +132,12 @@
                         {
                             clearInterval(timer);
                             timer = setInterval(moveLeft, 100);
+    
                         }
-                     
                         else if (textBox.value.includes("stop"))
                         {
                             clearInterval(timer);
                             timer = setInterval(moveLeft, 100);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
                         }
                         else
                         {
@@ -157,15 +153,9 @@
                             timer = setInterval(moveRight, 100);
                          
                         }
-                      
-                        else if (textBox.value.includes("stop"))
+                        else if ()
                         {
-                            clearInterval(timer);
-                            timer = setInterval(moveRight, 100);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
+                            
                         }
                         else
                         {
@@ -181,18 +171,7 @@
                             clearInterval(timer);
                             timer = setInterval(runLeft, 10);
                           
-                        }
-                        else if (textBox.value.includes("stop"))
-                        {
-                            clearInterval(timer);
-                            timer = setInterval(runLeft, 10);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
-                        }
-                        else
-                        {
+                        }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + 1 + "px";
                             stepRight(); // animation
                         }
@@ -205,18 +184,7 @@
                             clearInterval(timer);
                             timer = setInterval(runRight, 10);
                         
-                        }
-                        else if (textBox.value.includes("stop"))
-                        {
-                             clearInterval(timer);
-                            timer = setInterval(runRight, 10);
-                        }
-                        else if (textBox.value.includes("bye"))
-                        {
-                            alien.style.display = "none";
-                        }
-                        else
-                        {
+                        }else{
                             alienImg.style.left = parseInt(alienImg.style.left) + -1 + "px";
                             stepLeft(); // animation
                         }
@@ -234,7 +202,7 @@
                     alienImg.id = "alien"
                 }
 
-                //alien timer
+                //alien walk
                 if (timer == null)
                     {
                         if (textBox.value.includes("walk"))
@@ -261,6 +229,19 @@
                             }
                     }
                        
+                // alien stop 
+                if (textBox.value.includes("stop"))
+                {
+                    clearInterval(timer)
+                    timer = null
+                }
+                
+                       
+                //alien bye
+                if (textBox.value.includes("bye"))
+                    {
+                        alien.style.display = "none";
+                    }
 
                 //jquery
                 if(textBox.value == "jquery")

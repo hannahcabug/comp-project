@@ -132,8 +132,8 @@
                         {
                             clearInterval(timer);
                             timer = setInterval(moveLeft, 100);
+    
                         }
-                     
                         else if (textBox.value.includes("stop"))
                         {
                             clearInterval(timer);
@@ -157,7 +157,6 @@
                             timer = setInterval(moveRight, 100);
                          
                         }
-                      
                         else if (textBox.value.includes("stop"))
                         {
                             clearInterval(timer);
@@ -234,7 +233,7 @@
                     alienImg.id = "alien"
                 }
 
-                //alien timer
+                //alien walk
                 if (timer == null)
                     {
                         if (textBox.value.includes("walk"))
@@ -261,6 +260,19 @@
                             }
                     }
                        
+                // alien stop 
+                if (textBox.value.includes("stop"))
+                {
+                    clearInterval(timer)
+                    timer = null
+                }
+                
+                       
+                //alien bye
+                if (textBox.value.includes("bye"))
+                    {
+                        alien.style.display = "none";
+                    }
 
                 //jquery
                 if(textBox.value == "jquery")

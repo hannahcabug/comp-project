@@ -132,8 +132,17 @@
                         {
                             clearInterval(timer);
                             timer = setInterval(moveLeft, 100);
+    
                         }
-                     
+                        else if (textBox.value.includes("run"))
+                        {
+                            if(parseInt(alienImg.style.left) > document.body.clientWidth)
+                        {
+                            clearInterval(timer);
+                            timer = setInterval(runLeft, 10);
+                          
+                        }
+                        }
                         else if (textBox.value.includes("stop"))
                         {
                             clearInterval(timer);
@@ -157,7 +166,6 @@
                             timer = setInterval(moveRight, 100);
                          
                         }
-                      
                         else if (textBox.value.includes("stop"))
                         {
                             clearInterval(timer);

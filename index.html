@@ -89,13 +89,17 @@
 
                                 var advice = ajax.responseText;
                                 var h1 = document.createElement('H1')
+                                var text = '{"advice":"It always seems impossible until it’s done", "quoted": "Nelson Mandela"}'
+                                var obj = JSON.parse(text);
 
-                                h1.innerHTML = advice;
+                                //h1.innerHTML = advice;
+                                h1.innerHTML = obj.advice + ", " + obj.quoted
                                 document.body.appendChild(h1)
                                 console.log(advice);
                             }
                         }
                      }
+                
                 ajax.send(null);
                 }      
 
